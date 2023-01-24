@@ -1,0 +1,4 @@
+go:
+  packagename: github.com/resendlabs/resend-go
+  version: 0.0.1
+telemetryenabled: true
