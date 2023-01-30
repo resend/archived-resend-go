@@ -17,5 +17,6 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           languages: |-
             - go
+          mode: pr
           speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
 
