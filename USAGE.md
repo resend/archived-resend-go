@@ -23,15 +23,15 @@ func main() {
     
     req := operations.SendEmailRequest{
         Request: shared.Email{
-            Bcc: "sit",
-            Cc: "voluptas",
-            From: "culpa",
-            HTML: "expedita",
-            React: "consequuntur",
-            ReplyTo: "dolor",
-            Subject: "expedita",
-            Text: "voluptas",
-            To: "fugit",
+            Bcc: "unde",
+            Cc: "deserunt",
+            From: "porro",
+            HTML: "nulla",
+            React: "id",
+            ReplyTo: "vero",
+            Subject: "perspiciatis",
+            Text: "nulla",
+            To: "nihil",
         },
     }
     
