@@ -3,6 +3,7 @@
 package main
 
 import (
+    "log"
     "github.com/resendlabs/resend-go"
     "github.com/resendlabs/resend-go/pkg/models/shared"
     "github.com/resendlabs/resend-go/pkg/models/operations"
@@ -23,15 +24,15 @@ func main() {
     
     req := operations.SendEmailRequest{
         Request: shared.Email{
-            Bcc: "sit",
-            Cc: "voluptas",
-            From: "culpa",
-            HTML: "expedita",
-            React: "consequuntur",
-            ReplyTo: "dolor",
-            Subject: "expedita",
-            Text: "voluptas",
-            To: "fugit",
+            Bcc: "unde",
+            Cc: "deserunt",
+            From: "porro",
+            HTML: "nulla",
+            React: "id",
+            ReplyTo: "vero",
+            Subject: "perspiciatis",
+            Text: "nulla",
+            To: "nihil",
         },
     }
     
