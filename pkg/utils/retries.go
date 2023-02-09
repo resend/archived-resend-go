@@ -3,6 +3,7 @@ package utils
 import (
 	"context"
 	"errors"
+	"fmt"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -71,6 +72,9 @@ func Retry(ctx context.Context, r Retries, action func() (*http.Response, error)
 				return backoff.Permanent(err)
 			}
 			resp = res
+			if res == nil {
+				return fmt.Errorf("no response")
+			}
 
 			for _, code := range r.StatusCodes {
 				if strings.Contains(strings.ToUpper(code), "X") {
