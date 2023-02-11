@@ -6,3 +6,4 @@ go:
     version: 0.1.0
     packagename: github.com/resendlabs/resend-go
 telemetryenabled: true
+sdkclassname: resend
