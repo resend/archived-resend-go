@@ -1,10 +1,10 @@
 package sdk
 
 import (
-	"net/http"
-
 	"github.com/resendlabs/resend-go/pkg/models/shared"
 	"github.com/resendlabs/resend-go/pkg/utils"
+	"net/http"
+	"time"
 )
 
 var ServerList = []string{
@@ -16,8 +16,9 @@ type HTTPClient interface {
 }
 
 type SDK struct {
-	Emails *Emails
+	Emails *emails
 
+	// Non-idiomatic field names below are to namespace fields from the fields names above to avoid name conflicts
 	_defaultClient  HTTPClient
 	_securityClient HTTPClient
 	_security       *shared.Security
@@ -54,15 +55,16 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		_language:   "go",
-		_sdkVersion: "0.1.0",
-		_genVersion: "0.21.0",
+		_sdkVersion: "1.0.0",
+		_genVersion: "1.3.1",
 	}
 	for _, opt := range opts {
 		opt(sdk)
 	}
 
+	// Use WithClient to override the default client if you would like to customize the timeout
 	if sdk._defaultClient == nil {
-		sdk._defaultClient = http.DefaultClient
+		sdk._defaultClient = &http.Client{Timeout: 60 * time.Second}
 	}
 	if sdk._securityClient == nil {
 
@@ -78,7 +80,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._serverURL = ServerList[0]
 	}
 
-	sdk.Emails = NewEmails(
+	sdk.Emails = newEmails(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
