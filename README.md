@@ -19,14 +19,15 @@ go get github.com/resendlabs/resend-go
 package main
 
 import (
+    "log"
     "github.com/resendlabs/resend-go"
     "github.com/resendlabs/resend-go/pkg/models/shared"
     "github.com/resendlabs/resend-go/pkg/models/operations"
 )
 
 func main() {
-    opts := []sdk.SDKOption{
-        sdk.WithSecurity(
+    opts := []resend.SDKOption{
+        resend.WithSecurity(
             shared.Security{
                 BearerAuth: shared.SchemeBearerAuth{
                     Authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
@@ -35,19 +36,19 @@ func main() {
         ),
     }
 
-    s := sdk.New(opts...)
+    s := resend.New(opts...)
     
     req := operations.SendEmailRequest{
         Request: shared.Email{
-            Bcc: "sit",
-            Cc: "voluptas",
-            From: "culpa",
-            HTML: "expedita",
-            React: "consequuntur",
-            ReplyTo: "dolor",
-            Subject: "expedita",
-            Text: "voluptas",
-            To: "fugit",
+            Bcc: "unde",
+            Cc: "deserunt",
+            From: "porro",
+            HTML: "nulla",
+            React: "id",
+            ReplyTo: "vero",
+            Subject: "perspiciatis",
+            Text: "nulla",
+            To: "nihil",
         },
     }
     
@@ -73,10 +74,10 @@ Authorization: Bearer re_123
 <!-- Start SDK Available Operations -->
 ## SDK Available Operations
 
-### emails
+
+### Emails
 
 * `SendEmail` - Send an email
-
 <!-- End SDK Available Operations -->
 
 ## Contributions
