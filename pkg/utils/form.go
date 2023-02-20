@@ -5,6 +5,9 @@ import (
 	"net/url"
 	"reflect"
 	"strings"
+	"time"
+
+	"github.com/resendlabs/resend-go/pkg/types"
 )
 
 func populateForm(paramName string, explode bool, objType reflect.Type, objValue reflect.Value, getFieldName func(reflect.StructField) string) url.Values {
@@ -20,32 +23,41 @@ func populateForm(paramName string, explode bool, objType reflect.Type, objValue
 
 	switch objType.Kind() {
 	case reflect.Struct:
-		var items []string
+		switch objValue.Interface().(type) {
+		case time.Time:
+			formValues.Add(paramName, valToString(objValue.Interface()))
+		case types.Date:
+			formValues.Add(paramName, valToString(objValue.Interface()))
+		default:
+			var items []string
 
-		for i := 0; i < objType.NumField(); i++ {
-			fieldType := objType.Field(i)
-			valType := objValue.Field(i)
+			for i := 0; i < objType.NumField(); i++ {
+				fieldType := objType.Field(i)
+				valType := objValue.Field(i)
 
-			fieldName := getFieldName(fieldType)
-			if fieldName == "" {
-				continue
-			}
+				if valType.Kind() == reflect.Pointer {
+					if valType.IsNil() {
+						continue
+					}
 
-			if explode {
-				var value string
-				if valType.Type().Kind() == reflect.Ptr {
-					value = fmt.Sprintf("%v", valType.Elem())
-				} else {
-					value = fmt.Sprintf("%v", valType.Interface())
+					valType = valType.Elem()
 				}
-				formValues.Add(fieldName, value)
-			} else {
-				items = append(items, fmt.Sprintf("%s,%v", fieldName, valType.Interface()))
-			}
-		}
 
-		if len(items) > 0 {
-			formValues.Add(paramName, strings.Join(items, ","))
+				fieldName := getFieldName(fieldType)
+				if fieldName == "" {
+					continue
+				}
+
+				if explode {
+					formValues.Add(fieldName, valToString(valType.Interface()))
+				} else {
+					items = append(items, fmt.Sprintf("%s,%s", fieldName, valToString(valType.Interface())))
+				}
+			}
+
+			if len(items) > 0 {
+				formValues.Add(paramName, strings.Join(items, ","))
+			}
 		}
 	case reflect.Map:
 		items := []string{}
@@ -53,9 +65,9 @@ func populateForm(paramName string, explode bool, objType reflect.Type, objValue
 		iter := objValue.MapRange()
 		for iter.Next() {
 			if explode {
-				formValues.Add(iter.Key().String(), fmt.Sprintf("%v", iter.Value().Interface()))
+				formValues.Add(iter.Key().String(), valToString(iter.Value().Interface()))
 			} else {
-				items = append(items, fmt.Sprintf("%s,%v", iter.Key().String(), iter.Value().Interface()))
+				items = append(items, fmt.Sprintf("%s,%s", iter.Key().String(), valToString(iter.Value().Interface())))
 			}
 		}
 
@@ -68,7 +80,7 @@ func populateForm(paramName string, explode bool, objType reflect.Type, objValue
 			formValues.Add(paramName, v)
 		}
 	default:
-		formValues.Add(paramName, fmt.Sprintf("%v", objValue.Interface()))
+		formValues.Add(paramName, valToString(objValue.Interface()))
 	}
 
 	return formValues
@@ -80,9 +92,9 @@ func parseFormStyleArray(explode bool, objValue reflect.Value) []string {
 
 	for i := 0; i < objValue.Len(); i++ {
 		if explode {
-			values = append(values, fmt.Sprintf("%v", objValue.Index(i).Interface()))
+			values = append(values, valToString(objValue.Index(i).Interface()))
 		} else {
-			items = append(items, fmt.Sprintf("%v", objValue.Index(i).Interface()))
+			items = append(items, valToString(objValue.Index(i).Interface()))
 		}
 	}
 

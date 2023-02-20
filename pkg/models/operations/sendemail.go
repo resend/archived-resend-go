@@ -13,5 +13,5 @@ type SendEmailRequest struct {
 type SendEmailResponse struct {
 	ContentType       string
 	SendEmailResponse *shared.SendEmailResponse
-	StatusCode        int64
+	StatusCode        int
 }

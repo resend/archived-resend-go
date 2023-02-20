@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-type emails struct {
+type email struct {
 	defaultClient  HTTPClient
 	securityClient HTTPClient
 	serverURL      string
@@ -19,8 +19,8 @@ type emails struct {
 	genVersion     string
 }
 
-func newEmails(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *emails {
-	return &emails{
+func newEmail(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *email {
+	return &email{
 		defaultClient:  defaultClient,
 		securityClient: securityClient,
 		serverURL:      serverURL,
@@ -31,9 +31,9 @@ func newEmails(defaultClient, securityClient HTTPClient, serverURL, language, sd
 }
 
 // SendEmail - Send an email
-func (s *emails) SendEmail(ctx context.Context, request operations.SendEmailRequest) (*operations.SendEmailResponse, error) {
+func (s *email) SendEmail(ctx context.Context, request operations.SendEmailRequest) (*operations.SendEmailResponse, error) {
 	baseURL := s.serverURL
-	url := strings.TrimSuffix(baseURL, "/") + "/emails"
+	url := strings.TrimSuffix(baseURL, "/") + "/email"
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
 	if err != nil {
@@ -86,7 +86,7 @@ func (s *emails) SendEmail(ctx context.Context, request operations.SendEmailRequ
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.SendEmailResponse{
-		StatusCode:  int64(httpRes.StatusCode),
+		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 	}
 	switch {

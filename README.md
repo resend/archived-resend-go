@@ -44,15 +44,14 @@ func main() {
             Cc: "deserunt",
             From: "porro",
             HTML: "nulla",
-            React: "id",
-            ReplyTo: "vero",
-            Subject: "perspiciatis",
-            Text: "nulla",
-            To: "nihil",
+            ReplyTo: "id",
+            Subject: "vero",
+            Text: "perspiciatis",
+            To: "nulla",
         },
     }
     
-    res, err := s.Emails.SendEmail(ctx, req)
+    res, err := s.Email.SendEmail(ctx, req)
     if err != nil {
         log.Fatal(err)
     }
@@ -75,7 +74,7 @@ Authorization: Bearer re_123
 ## SDK Available Operations
 
 
-### Emails
+### Email
 
 * `SendEmail` - Send an email
 <!-- End SDK Available Operations -->

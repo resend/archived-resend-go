@@ -56,7 +56,7 @@ func getSimplePathParams(ctx context.Context, parentName string, objType reflect
 		}
 		var ppVals []string
 		for i := 0; i < objValue.Len(); i++ {
-			ppVals = append(ppVals, fmt.Sprintf("%v", objValue.Index(i).Interface()))
+			ppVals = append(ppVals, valToString(objValue.Index(i).Interface()))
 		}
 		pathParams[parentName] = strings.Join(ppVals, ",")
 	case reflect.Map:
@@ -67,9 +67,9 @@ func getSimplePathParams(ctx context.Context, parentName string, objType reflect
 		objMap := objValue.MapRange()
 		for objMap.Next() {
 			if explode {
-				ppVals = append(ppVals, fmt.Sprintf("%s=%v", objMap.Key().String(), objMap.Value().Interface()))
+				ppVals = append(ppVals, fmt.Sprintf("%s=%s", objMap.Key().String(), valToString(objMap.Value().Interface())))
 			} else {
-				ppVals = append(ppVals, fmt.Sprintf("%s,%v", objMap.Key().String(), objMap.Value().Interface()))
+				ppVals = append(ppVals, fmt.Sprintf("%s,%s", objMap.Key().String(), valToString(objMap.Value().Interface())))
 			}
 		}
 		pathParams[parentName] = strings.Join(ppVals, ",")
@@ -92,14 +92,14 @@ func getSimplePathParams(ctx context.Context, parentName string, objType reflect
 			}
 
 			if explode {
-				ppVals = append(ppVals, fmt.Sprintf("%s=%v", ppTag.ParamName, valType.Interface()))
+				ppVals = append(ppVals, fmt.Sprintf("%s=%s", ppTag.ParamName, valToString(valType.Interface())))
 			} else {
-				ppVals = append(ppVals, fmt.Sprintf("%s,%v", ppTag.ParamName, valType.Interface()))
+				ppVals = append(ppVals, fmt.Sprintf("%s,%s", ppTag.ParamName, valToString(valType.Interface())))
 			}
 		}
 		pathParams[parentName] = strings.Join(ppVals, ",")
 	default:
-		pathParams[parentName] = fmt.Sprintf("%v", objValue.Interface())
+		pathParams[parentName] = valToString(objValue.Interface())
 	}
 
 	return pathParams

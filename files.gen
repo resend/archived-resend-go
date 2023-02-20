@@ -1,6 +1,8 @@
-emails.go
+email.go
 resend.go
 go.mod
+go.sum
+pkg/utils/form.go
 pkg/models/operations/sendemail.go
 pkg/models/shared/sendemailresponse.go
 pkg/models/shared/email.go

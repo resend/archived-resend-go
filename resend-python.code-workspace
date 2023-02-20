@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../resend-python"
+		},
+		{
+			"path": "../resend-java"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
