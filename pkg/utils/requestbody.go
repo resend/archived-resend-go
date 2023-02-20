@@ -111,7 +111,7 @@ func serializeContentType(fieldName string, mediaType string, val reflect.Value)
 
 		switch {
 		case val.Type().Kind() == reflect.String:
-			if _, err := buf.WriteString(val.String()); err != nil {
+			if _, err := buf.WriteString(valToString(val.Interface())); err != nil {
 				return nil, "", err
 			}
 		case val.Type() == reflect.TypeOf([]byte(nil)):
@@ -163,7 +163,12 @@ func encodeMultipartFormData(w io.Writer, data interface{}) (string, error) {
 				writer.Close()
 				return "", err
 			}
-			if err := json.NewEncoder(jw).Encode(valType.Interface()); err != nil {
+			d, err := json.Marshal(valType.Interface())
+			if err != nil {
+				writer.Close()
+				return "", err
+			}
+			if _, err := jw.Write(d); err != nil {
 				writer.Close()
 				return "", err
 			}
@@ -178,7 +183,7 @@ func encodeMultipartFormData(w io.Writer, data interface{}) (string, error) {
 					}
 				}
 			default:
-				if err := writer.WriteField(tag.Name, fmt.Sprintf("%v", valType.Interface())); err != nil {
+				if err := writer.WriteField(tag.Name, valToString(valType.Interface())); err != nil {
 					writer.Close()
 					return "", err
 				}
@@ -291,12 +296,12 @@ func encodeFormData(fieldName string, w io.Writer, data interface{}) error {
 	case reflect.Map:
 		for _, k := range requestValType.MapKeys() {
 			v := requestValType.MapIndex(k)
-			dataValues.Set(fmt.Sprintf("%v", k.Interface()), fmt.Sprintf("%v", v.Interface()))
+			dataValues.Set(fmt.Sprintf("%v", k.Interface()), valToString(v.Interface()))
 		}
 	case reflect.Slice, reflect.Array:
 		for i := 0; i < requestValType.Len(); i++ {
 			v := requestValType.Index(i)
-			dataValues.Set(fieldName, fmt.Sprintf("%v", v.Interface()))
+			dataValues.Set(fieldName, valToString(v.Interface()))
 		}
 	}
 

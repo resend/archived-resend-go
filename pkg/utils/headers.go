@@ -64,9 +64,9 @@ func serializeHeader(objType reflect.Type, objValue reflect.Value, explode bool)
 			}
 
 			if explode {
-				items = append(items, fmt.Sprintf("%s=%v", fieldName, valType.Interface()))
+				items = append(items, fmt.Sprintf("%s=%s", fieldName, valToString(valType.Interface())))
 			} else {
-				items = append(items, fieldName, fmt.Sprintf("%v", valType.Interface()))
+				items = append(items, fieldName, valToString(valType.Interface()))
 			}
 		}
 
@@ -77,9 +77,9 @@ func serializeHeader(objType reflect.Type, objValue reflect.Value, explode bool)
 		iter := objValue.MapRange()
 		for iter.Next() {
 			if explode {
-				items = append(items, fmt.Sprintf("%s=%v", iter.Key().String(), iter.Value().Interface()))
+				items = append(items, fmt.Sprintf("%s=%s", iter.Key().String(), valToString(iter.Value().Interface())))
 			} else {
-				items = append(items, iter.Key().String(), fmt.Sprintf("%v", iter.Value().Interface()))
+				items = append(items, iter.Key().String(), valToString(iter.Value().Interface()))
 			}
 		}
 
@@ -88,11 +88,11 @@ func serializeHeader(objType reflect.Type, objValue reflect.Value, explode bool)
 		items := []string{}
 
 		for i := 0; i < objValue.Len(); i++ {
-			items = append(items, fmt.Sprintf("%v", objValue.Index(i).Interface()))
+			items = append(items, valToString(objValue.Index(i).Interface()))
 		}
 
 		return strings.Join(items, ",")
 	default:
-		return fmt.Sprintf("%v", objValue.Interface())
+		return valToString(objValue.Interface())
 	}
 }

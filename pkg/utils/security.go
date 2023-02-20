@@ -80,7 +80,7 @@ func parseSecurityStruct(c HTTPClient, security interface{}) *SecurityClient {
 		fieldType := securityStructType.Field(i)
 		valType := securityValType.Field(i)
 
-		if fieldType.Type.Kind() == reflect.Pointer && valType.Elem().IsNil() {
+		if fieldType.Type.Kind() == reflect.Pointer && valType.IsNil() {
 			continue
 		}
 
@@ -126,6 +126,15 @@ func parseSecurityScheme(client *SecurityClient, schemeTag *securityTag, scheme 
 
 	schemeStructType := reflect.TypeOf(scheme)
 	schemeValType := reflect.ValueOf(scheme)
+
+	if schemeStructType.Kind() == reflect.Ptr {
+		if schemeValType.IsNil() {
+			return
+		}
+
+		schemeStructType = schemeStructType.Elem()
+		schemeValType = schemeValType.Elem()
+	}
 
 	for i := 0; i < schemeStructType.NumField(); i++ {
 		fieldType := schemeStructType.Field(i)

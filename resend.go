@@ -16,7 +16,7 @@ type HTTPClient interface {
 }
 
 type Resend struct {
-	Emails *emails
+	Email *email
 
 	// Non-idiomatic field names below are to namespace fields from the fields names above to avoid name conflicts
 	_defaultClient  HTTPClient
@@ -56,7 +56,7 @@ func New(opts ...SDKOption) *Resend {
 	sdk := &Resend{
 		_language:   "go",
 		_sdkVersion: "1.0.0",
-		_genVersion: "1.3.1",
+		_genVersion: "1.3.3",
 	}
 	for _, opt := range opts {
 		opt(sdk)
@@ -80,7 +80,7 @@ func New(opts ...SDKOption) *Resend {
 		sdk._serverURL = ServerList[0]
 	}
 
-	sdk.Emails = newEmails(
+	sdk.Email = newEmail(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
