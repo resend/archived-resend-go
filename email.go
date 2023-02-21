@@ -53,28 +53,7 @@ func (s *email) SendEmail(ctx context.Context, request operations.SendEmailReque
 
 	client := s.securityClient
 
-	retryConfig := request.Retries
-	if retryConfig == nil {
-		retryConfig = &utils.RetryConfig{
-			Strategy: "backoff",
-			Backoff: &utils.BackoffStrategy{
-				InitialInterval: 5000,
-				MaxInterval:     60000,
-				Exponent:        1.5,
-				MaxElapsedTime:  3600000,
-			},
-			RetryConnectionErrors: true,
-		}
-	}
-
-	httpRes, err := utils.Retry(ctx, utils.Retries{
-		Config: retryConfig,
-		StatusCodes: []string{
-			"500",
-		},
-	}, func() (*http.Response, error) {
-		return client.Do(req)
-	})
+	httpRes, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %w", err)
 	}
