@@ -3,11 +3,12 @@ package resend
 import (
 	"context"
 	"fmt"
+	"net/http"
+	"strings"
+
 	"github.com/resendlabs/resend-go/pkg/models/operations"
 	"github.com/resendlabs/resend-go/pkg/models/shared"
 	"github.com/resendlabs/resend-go/pkg/utils"
-	"net/http"
-	"strings"
 )
 
 type email struct {

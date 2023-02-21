@@ -2,7 +2,16 @@ email.go
 resend.go
 go.mod
 go.sum
+pkg/types/date.go
+pkg/utils/contenttype.go
 pkg/utils/form.go
+pkg/utils/headers.go
+pkg/utils/pathparams.go
+pkg/utils/queryparams.go
+pkg/utils/requestbody.go
+pkg/utils/retries.go
+pkg/utils/security.go
+pkg/utils/utils.go
 pkg/models/operations/sendemail.go
 pkg/models/shared/sendemailresponse.go
 pkg/models/shared/email.go
