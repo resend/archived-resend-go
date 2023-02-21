@@ -7,5 +7,4 @@ pkg/models/operations/sendemail.go
 pkg/models/shared/sendemailresponse.go
 pkg/models/shared/email.go
 pkg/models/shared/security.go
-pkg/models/utils/sendemail.go
 USAGE.md
