@@ -1,11 +1,10 @@
 package resend
 
 import (
-	"net/http"
-	"time"
-
 	"github.com/resendlabs/resend-go/pkg/models/shared"
 	"github.com/resendlabs/resend-go/pkg/utils"
+	"net/http"
+	"time"
 )
 
 var ServerList = []string{
@@ -56,8 +55,8 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *Resend {
 	sdk := &Resend{
 		_language:   "go",
-		_sdkVersion: "1.1.0",
-		_genVersion: "1.4.4",
+		_sdkVersion: "1.2.1",
+		_genVersion: "1.5.3",
 	}
 	for _, opt := range opts {
 		opt(sdk)

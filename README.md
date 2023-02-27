@@ -33,6 +33,7 @@ Authorization: Bearer re_123
 package main
 
 import (
+    "context"
     "log"
     "github.com/resendlabs/resend-go"
     "github.com/resendlabs/resend-go/pkg/models/shared"
@@ -46,7 +47,7 @@ func main() {
                 BearerAuth: shared.SchemeBearerAuth{
                     Authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
                 },
-            }
+            },
         ),
     }
 
@@ -64,7 +65,8 @@ func main() {
             To: "nulla",
         },
     }
-    
+
+    ctx := context.Background()
     res, err := s.Email.SendEmail(ctx, req)
     if err != nil {
         log.Fatal(err)
@@ -73,6 +75,7 @@ func main() {
     if res.SendEmailResponse != nil {
         // handle response
     }
+}
 ```
 <!-- End SDK Example Usage -->
 
