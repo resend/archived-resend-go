@@ -76,12 +76,20 @@ func parseSecurityStruct(c HTTPClient, security interface{}) *SecurityClient {
 		securityValType = securityValType.Elem()
 	}
 
+	client := newSecurityClient(c)
+
 	for i := 0; i < securityStructType.NumField(); i++ {
 		fieldType := securityStructType.Field(i)
 		valType := securityValType.Field(i)
 
-		if fieldType.Type.Kind() == reflect.Pointer && valType.IsNil() {
-			continue
+		kind := valType.Kind()
+
+		if fieldType.Type.Kind() == reflect.Pointer {
+			if valType.IsNil() {
+				continue
+			}
+
+			kind = valType.Elem().Kind()
 		}
 
 		secTag := parseSecurityTag(fieldType)
@@ -89,19 +97,32 @@ func parseSecurityStruct(c HTTPClient, security interface{}) *SecurityClient {
 			if secTag.Option {
 				return parseSecurityOption(c, valType.Interface())
 			} else if secTag.Scheme {
-				client := newSecurityClient(c)
-				parseSecurityScheme(client, secTag, valType.Interface())
-				return client
+				// Special case for basic auth which could be a flattened struct
+				if secTag.SubType == "basic" && kind != reflect.Struct {
+					parseSecurityScheme(client, secTag, security)
+					return client
+				} else {
+					parseSecurityScheme(client, secTag, valType.Interface())
+				}
 			}
 		}
 	}
 
-	return nil
+	return client
 }
 
 func parseSecurityOption(c HTTPClient, option interface{}) *SecurityClient {
 	optionStructType := reflect.TypeOf(option)
 	optionValType := reflect.ValueOf(option)
+
+	if optionStructType.Kind() == reflect.Ptr {
+		if optionValType.IsNil() {
+			return nil
+		}
+
+		optionStructType = optionStructType.Elem()
+		optionValType = optionValType.Elem()
+	}
 
 	client := newSecurityClient(c)
 
@@ -119,58 +140,74 @@ func parseSecurityOption(c HTTPClient, option interface{}) *SecurityClient {
 }
 
 func parseSecurityScheme(client *SecurityClient, schemeTag *securityTag, scheme interface{}) {
-	if schemeTag.Type == "http" && schemeTag.SubType == "basic" {
-		parseBasicAuthScheme(client, scheme)
-		return
-	}
+	schemeType := reflect.TypeOf(scheme)
+	schemeVal := reflect.ValueOf(scheme)
 
-	schemeStructType := reflect.TypeOf(scheme)
-	schemeValType := reflect.ValueOf(scheme)
-
-	if schemeStructType.Kind() == reflect.Ptr {
-		if schemeValType.IsNil() {
+	if schemeType.Kind() == reflect.Ptr {
+		if schemeVal.IsNil() {
 			return
 		}
 
-		schemeStructType = schemeStructType.Elem()
-		schemeValType = schemeValType.Elem()
+		schemeType = schemeType.Elem()
+		schemeVal = schemeVal.Elem()
 	}
 
-	for i := 0; i < schemeStructType.NumField(); i++ {
-		fieldType := schemeStructType.Field(i)
-		valType := schemeValType.Field(i)
-
-		secTag := parseSecurityTag(fieldType)
-		if secTag == nil || secTag.Name == "" {
-			continue
+	if schemeType.Kind() == reflect.Struct {
+		if schemeTag.Type == "http" && schemeTag.SubType == "basic" {
+			parseBasicAuthScheme(client, schemeVal.Interface())
+			return
 		}
 
-		switch schemeTag.Type {
-		case "apiKey":
-			switch schemeTag.SubType {
-			case "header":
-				client.headers[secTag.Name] = valType.String()
-			case "query":
-				client.queryParams[secTag.Name] = valType.String()
-			case "cookie":
-				client.headers["Cookie"] = fmt.Sprintf("%s=%s", secTag.Name, valType.String())
-			default:
-				panic("not supported")
+		for i := 0; i < schemeType.NumField(); i++ {
+			fieldType := schemeType.Field(i)
+			valType := schemeVal.Field(i)
+
+			if fieldType.Type.Kind() == reflect.Ptr {
+				if valType.IsNil() {
+					continue
+				}
+
+				valType = valType.Elem()
 			}
-		case "openIdConnect":
-			client.headers[secTag.Name] = valType.String()
-		case "oauth2":
-			client.headers[secTag.Name] = valType.String()
-		case "http":
-			switch schemeTag.SubType {
-			case "bearer":
-				client.headers[secTag.Name] = valType.String()
-			default:
-				panic("not supported")
+
+			secTag := parseSecurityTag(fieldType)
+			if secTag == nil || secTag.Name == "" {
+				return
 			}
+
+			parseSecuritySchemeValue(client, schemeTag, secTag, valType.Interface())
+		}
+	} else {
+		parseSecuritySchemeValue(client, schemeTag, schemeTag, schemeVal.Interface())
+	}
+}
+
+func parseSecuritySchemeValue(client *SecurityClient, schemeTag *securityTag, secTag *securityTag, val interface{}) {
+	switch schemeTag.Type {
+	case "apiKey":
+		switch schemeTag.SubType {
+		case "header":
+			client.headers[secTag.Name] = valToString(val)
+		case "query":
+			client.queryParams[secTag.Name] = valToString(val)
+		case "cookie":
+			client.headers["Cookie"] = fmt.Sprintf("%s=%s", secTag.Name, valToString(val))
 		default:
 			panic("not supported")
 		}
+	case "openIdConnect":
+		client.headers[secTag.Name] = valToString(val)
+	case "oauth2":
+		client.headers[secTag.Name] = valToString(val)
+	case "http":
+		switch schemeTag.SubType {
+		case "bearer":
+			client.headers[secTag.Name] = valToString(val)
+		default:
+			panic("not supported")
+		}
+	default:
+		panic("not supported")
 	}
 }
 
