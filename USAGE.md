@@ -1,3 +1,4 @@
+<!-- Start SDK Example Usage -->
 ```go
 package main
 
@@ -18,10 +19,14 @@ func main() {
     
     req := operations.SendEmailRequest{
         Request: shared.Email{
-            From: "hello@resend.com",
-            To: "thefuture@yourcompany.com",
-            Subject: "Welcome to Resend!",
-            Text: "Hello, World!",
+            Bcc: "unde",
+            Cc: "deserunt",
+            From: "porro",
+            HTML: "nulla",
+            ReplyTo: "id",
+            Subject: "vero",
+            Text: "perspiciatis",
+            To: "nulla",
         },
     }
 
@@ -36,3 +41,4 @@ func main() {
     }
 }
 ```
+<!-- End SDK Example Usage -->
