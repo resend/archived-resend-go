@@ -37,6 +37,15 @@ func ReplaceParameters(stringWithParams string, params map[string]string) string
 	})
 }
 
+func Contains(slice []string, item string) bool {
+	for _, s := range slice {
+		if s == item {
+			return true
+		}
+	}
+	return false
+}
+
 func parseStructTag(tagKey string, field reflect.StructField) map[string]string {
 	tag := field.Tag.Get(tagKey)
 	if tag == "" {

@@ -15,6 +15,10 @@ type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
+// String provides a helper function to return a pointer to a string
+func String(s string) *string { return &s }
+
+// SDK Documentation: Resend is the email platform for developers.
 type Resend struct {
 	Email *email
 
@@ -30,7 +34,13 @@ type Resend struct {
 
 type SDKOption func(*Resend)
 
-func WithServerURL(serverURL string, params map[string]string) SDKOption {
+func WithServerURL(serverURL string) SDKOption {
+	return func(sdk *Resend) {
+		sdk._serverURL = serverURL
+	}
+}
+
+func WithTemplatedServerURL(serverURL string, params map[string]string) SDKOption {
 	return func(sdk *Resend) {
 		if params != nil {
 			serverURL = utils.ReplaceParameters(serverURL, params)
@@ -55,8 +65,8 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *Resend {
 	sdk := &Resend{
 		_language:   "go",
-		_sdkVersion: "1.4.0",
-		_genVersion: "1.7.1",
+		_sdkVersion: "1.5.0",
+		_genVersion: "1.8.2",
 	}
 	for _, opt := range opts {
 		opt(sdk)
