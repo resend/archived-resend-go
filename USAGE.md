@@ -11,17 +11,11 @@ import (
 )
 
 func main() {
-    opts := []resend.SDKOption{
-        resend.WithSecurity(
-            shared.Security{
-                BearerAuth: shared.SchemeBearerAuth{
-                    Authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
-                },
-            },
-        ),
-    }
-
-    s := resend.New(opts...)
+    s := resend.New(resend.WithSecurity(
+        shared.Security{
+            BearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+        },
+    ))
     
     req := operations.SendEmailRequest{
         Request: shared.Email{
