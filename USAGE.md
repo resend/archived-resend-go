@@ -1,4 +1,3 @@
-<!-- Start SDK Example Usage -->
 ```go
 package main
 
@@ -11,28 +10,18 @@ import (
 )
 
 func main() {
-    opts := []resend.SDKOption{
-        resend.WithSecurity(
-            shared.Security{
-                BearerAuth: shared.SchemeBearerAuth{
-                    Authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
-                },
-            },
-        ),
-    }
-
-    s := resend.New(opts...)
+    s := resend.New(resend.WithSecurity(
+        shared.Security{
+            BearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+        },
+    ))
     
     req := operations.SendEmailRequest{
         Request: shared.Email{
-            Bcc: "unde",
-            Cc: "deserunt",
-            From: "porro",
-            HTML: "nulla",
-            ReplyTo: "id",
-            Subject: "vero",
-            Text: "perspiciatis",
-            To: "nulla",
+            From: "hello@resend.com",
+            To: "thefuture@yourcompany.com",
+            Subject: "Welcome to Resend!",
+            Text: "Hello, World!",
         },
     }
 
@@ -47,4 +36,3 @@ func main() {
     }
 }
 ```
-<!-- End SDK Example Usage -->

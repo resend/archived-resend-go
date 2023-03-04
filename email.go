@@ -67,6 +67,7 @@ func (s *email) SendEmail(ctx context.Context, request operations.SendEmailReque
 	res := &operations.SendEmailResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
+		RawResponse: httpRes,
 	}
 	switch {
 	case httpRes.StatusCode == 200:
