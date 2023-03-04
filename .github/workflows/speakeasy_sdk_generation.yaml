@@ -17,11 +17,12 @@ jobs:
     steps:
       - uses: speakeasy-api/sdk-generation-action@v13
         with:
+          force: ${{ github.event.inputs.force }}
           speakeasy_version: latest
           openapi_doc_location: https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
           languages: |-
             - go
           mode: pr
+        secrets:
           speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
-          force: ${{ github.event.inputs.force }}
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
