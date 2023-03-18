@@ -65,8 +65,8 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *Resend {
 	sdk := &Resend{
 		_language:   "go",
-		_sdkVersion: "1.6.0",
-		_genVersion: "1.12.0",
+		_sdkVersion: "1.6.1",
+		_genVersion: "1.12.3",
 	}
 	for _, opt := range opts {
 		opt(sdk)
