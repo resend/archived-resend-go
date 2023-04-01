@@ -68,7 +68,7 @@ func main() {
 ```
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### Email

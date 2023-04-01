@@ -18,14 +18,14 @@ func main() {
     )
 
     req := shared.Email{
-        Bcc: "unde",
-        Cc: "deserunt",
-        From: "porro",
-        HTML: "nulla",
-        ReplyTo: "id",
-        Subject: "vero",
-        Text: "perspiciatis",
-        To: "nulla",
+        Bcc: "corrupti",
+        Cc: "provident",
+        From: "distinctio",
+        HTML: "quibusdam",
+        ReplyTo: "unde",
+        Subject: "nulla",
+        Text: "corrupti",
+        To: "illum",
     }
 
     ctx := context.Background()
