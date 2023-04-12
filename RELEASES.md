@@ -183,3 +183,11 @@ Based on:
 - Speakeasy CLI 1.19.6 https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [Go v1.11.2] https://github.com/resendlabs/resend-go/releases/tag/v1.11.2 - .
+
+## 2023-04-12 00:39:12
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.19.7 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.11.3] https://github.com/resendlabs/resend-go/releases/tag/v1.11.3 - .

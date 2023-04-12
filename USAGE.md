@@ -17,6 +17,7 @@ func main() {
         }),
     )
 
+    ctx := context.Background()    
     req := shared.Email{
         Bcc: "corrupti",
         Cc: "provident",
@@ -28,7 +29,6 @@ func main() {
         To: "illum",
     }
 
-    ctx := context.Background()
     res, err := s.Email.SendEmail(ctx, req)
     if err != nil {
         log.Fatal(err)
