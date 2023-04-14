@@ -5,12 +5,13 @@ package utils
 import (
 	"context"
 	"fmt"
+	"net/url"
 	"reflect"
 	"strings"
 )
 
-func GenerateURL(ctx context.Context, serverURL, path string, pathParams interface{}, globals map[string]map[string]map[string]interface{}) string {
-	url := strings.TrimSuffix(serverURL, "/") + path
+func GenerateURL(ctx context.Context, serverURL, path string, pathParams interface{}, globals map[string]map[string]map[string]interface{}) (string, error) {
+	uri := strings.TrimSuffix(serverURL, "/") + path
 
 	pathParamsStructType := reflect.TypeOf(pathParams)
 	pathParamsValType := reflect.ValueOf(pathParams)
@@ -33,18 +34,28 @@ func GenerateURL(ctx context.Context, serverURL, path string, pathParams interfa
 
 		valType = populateFromGlobals(fieldType, valType, "pathParam", globals)
 
-		// TODO: support other styles
-		switch ppTag.Style {
-		case "simple":
-			simpleParams := getSimplePathParams(ctx, ppTag.ParamName, fieldType.Type, valType, ppTag.Explode)
-			for k, v := range simpleParams {
-				parsedParameters[k] = v
+		if ppTag.Serialization != "" {
+			vals, err := populateSerializedParams(ppTag, fieldType.Type, valType)
+			if err != nil {
+				return "", err
+			}
+			for k, v := range vals {
+				parsedParameters[k] = url.PathEscape(v)
+			}
+		} else {
+			// TODO: support other styles
+			switch ppTag.Style {
+			case "simple":
+				simpleParams := getSimplePathParams(ctx, ppTag.ParamName, fieldType.Type, valType, ppTag.Explode)
+				for k, v := range simpleParams {
+					parsedParameters[k] = v
+				}
 			}
 		}
 	}
 
 	// TODO should we handle the case where there are no matching path params?
-	return ReplaceParameters(url, parsedParameters)
+	return ReplaceParameters(uri, parsedParameters), nil
 }
 
 func getSimplePathParams(ctx context.Context, parentName string, objType reflect.Type, objValue reflect.Value, explode bool) map[string]string {
