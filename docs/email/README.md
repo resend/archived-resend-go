@@ -1,4 +1,19 @@
-<!-- Start SDK Example Usage -->
+# Email
+
+## Overview
+
+Email operations
+
+### Available Operations
+
+* [SendEmail](#sendemail) - Send an email
+
+## SendEmail
+
+Send an email
+
+### Example Usage
+
 ```go
 package main
 
@@ -18,14 +33,14 @@ func main() {
 
     ctx := context.Background()    
     req := shared.Email{
-        Bcc: resend.String("corrupti"),
-        Cc: resend.String("provident"),
-        From: "distinctio",
-        HTML: resend.String("quibusdam"),
-        ReplyTo: resend.String("unde"),
-        Subject: "nulla",
-        Text: resend.String("corrupti"),
-        To: "illum",
+        Bcc: resend.String("vel"),
+        Cc: resend.String("error"),
+        From: "deserunt",
+        HTML: resend.String("suscipit"),
+        ReplyTo: resend.String("iure"),
+        Subject: "magnam",
+        Text: resend.String("debitis"),
+        To: "ipsa",
     }
 
     res, err := s.Email.SendEmail(ctx, req)
@@ -38,4 +53,3 @@ func main() {
     }
 }
 ```
-<!-- End SDK Example Usage -->
