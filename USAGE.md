@@ -16,8 +16,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := shared.Email{
+    ctx := context.Background()
+    res, err := s.Email.SendEmail(ctx, shared.Email{
         Bcc: resend.String("corrupti"),
         Cc: resend.String("provident"),
         From: "distinctio",
@@ -26,9 +26,7 @@ func main() {
         Subject: "nulla",
         Text: resend.String("corrupti"),
         To: "illum",
-    }
-
-    res, err := s.Email.SendEmail(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
