@@ -12,7 +12,8 @@ import (
 	"github.com/resendlabs/resend-go/pkg/types"
 )
 
-func populateForm(paramName string, explode bool, objType reflect.Type, objValue reflect.Value, getFieldName func(reflect.StructField) string) url.Values {
+func populateForm(paramName string, explode bool, objType reflect.Type, objValue reflect.Value, arrayDelimiter string, getFieldName func(reflect.StructField) string) url.Values {
+
 	formValues := url.Values{}
 
 	if objType.Kind() == reflect.Pointer {
@@ -77,7 +78,7 @@ func populateForm(paramName string, explode bool, objType reflect.Type, objValue
 			formValues.Add(paramName, strings.Join(items, ","))
 		}
 	case reflect.Slice, reflect.Array:
-		values := parseFormStyleArray(explode, objValue)
+		values := parseDelimitedArray(explode, objValue, arrayDelimiter)
 		for _, v := range values {
 			formValues.Add(paramName, v)
 		}
@@ -88,7 +89,7 @@ func populateForm(paramName string, explode bool, objType reflect.Type, objValue
 	return formValues
 }
 
-func parseFormStyleArray(explode bool, objValue reflect.Value) []string {
+func parseDelimitedArray(explode bool, objValue reflect.Value, delimiter string) []string {
 	values := []string{}
 	items := []string{}
 
@@ -101,7 +102,7 @@ func parseFormStyleArray(explode bool, objValue reflect.Value) []string {
 	}
 
 	if len(items) > 0 {
-		values = append(values, strings.Join(items, ","))
+		values = append(values, strings.Join(items, delimiter))
 	}
 
 	return values
