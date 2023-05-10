@@ -34,7 +34,6 @@ func newEmail(defaultClient, securityClient HTTPClient, serverURL, language, sdk
 }
 
 // SendEmail - Send an email
-
 func (s *email) SendEmail(ctx context.Context, request shared.Email) (*operations.SendEmailResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/email"
