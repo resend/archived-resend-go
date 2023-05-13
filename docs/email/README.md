@@ -27,7 +27,7 @@ import(
 func main() {
     s := resend.New(
         resend.WithSecurity(shared.Security{
-            BearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
         }),
     )
 
