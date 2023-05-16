@@ -2,6 +2,7 @@ email.go
 resend.go
 go.mod
 go.sum
+pkg/types/bigint.go
 pkg/types/date.go
 pkg/types/datetime.go
 pkg/utils/contenttype.go

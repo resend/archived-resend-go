@@ -4,6 +4,7 @@ package utils
 
 import (
 	"fmt"
+	"math/big"
 	"net/url"
 	"reflect"
 	"strings"
@@ -30,6 +31,10 @@ func populateForm(paramName string, explode bool, objType reflect.Type, objValue
 		case time.Time:
 			formValues.Add(paramName, valToString(objValue.Interface()))
 		case types.Date:
+			formValues.Add(paramName, valToString(objValue.Interface()))
+		case types.BigInt:
+			formValues.Add(paramName, valToString(objValue.Interface()))
+		case big.Int:
 			formValues.Add(paramName, valToString(objValue.Interface()))
 		default:
 			var items []string
