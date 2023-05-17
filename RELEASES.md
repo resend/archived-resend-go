@@ -63,3 +63,299 @@ Based on:
 - Speakeasy CLI 1.8.2 https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [Go v1.3.1] https://github.com/resendlabs/resend-go/releases/tag/v1.3.1 - .
+
+## 2023-03-09 00:46:04
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.8.7 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.3.2] https://github.com/resendlabs/resend-go/releases/tag/v1.3.2 - .
+
+## 2023-03-10 00:46:29
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.9.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.4.0] https://github.com/resendlabs/resend-go/releases/tag/v1.4.0 - .
+
+## 2023-03-11 00:39:39
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.9.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.4.1] https://github.com/resendlabs/resend-go/releases/tag/v1.4.1 - .
+
+## 2023-03-15 00:45:28
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.11.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.5.0] https://github.com/resendlabs/resend-go/releases/tag/v1.5.0 - .
+
+## 2023-03-16 00:45:31
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.12.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.6.0] https://github.com/resendlabs/resend-go/releases/tag/v1.6.0 - .
+
+## 2023-03-18 00:41:47
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.12.3 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.6.1] https://github.com/resendlabs/resend-go/releases/tag/v1.6.1 - .
+
+## 2023-03-21 00:40:24
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.12.4 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.6.2] https://github.com/resendlabs/resend-go/releases/tag/v1.6.2 - .
+
+## 2023-03-22 00:40:15
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.13.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.7.0] https://github.com/resendlabs/resend-go/releases/tag/v1.7.0 - .
+
+## 2023-03-23 00:41:24
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.15.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.8.0] https://github.com/resendlabs/resend-go/releases/tag/v1.8.0 - .
+
+## 2023-03-24 00:41:10
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.17.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.9.0] https://github.com/resendlabs/resend-go/releases/tag/v1.9.0 - .
+
+## 2023-03-25 00:40:43
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.18.7 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.10.0] https://github.com/resendlabs/resend-go/releases/tag/v1.10.0 - .
+
+## 2023-03-28 00:42:19
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.18.9 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.10.1] https://github.com/resendlabs/resend-go/releases/tag/v1.10.1 - .
+
+## 2023-03-29 00:46:09
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.19.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.11.0] https://github.com/resendlabs/resend-go/releases/tag/v1.11.0 - .
+
+## 2023-04-01 00:41:29
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.19.3 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.11.1] https://github.com/resendlabs/resend-go/releases/tag/v1.11.1 - .
+
+## 2023-04-06 00:38:38
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.19.6 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.11.2] https://github.com/resendlabs/resend-go/releases/tag/v1.11.2 - .
+
+## 2023-04-12 00:39:12
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.19.7 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.11.3] https://github.com/resendlabs/resend-go/releases/tag/v1.11.3 - .
+
+## 2023-04-14 00:38:22
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.20.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.12.0] https://github.com/resendlabs/resend-go/releases/tag/v1.12.0 - .
+
+## 2023-04-18 00:38:50
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.20.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.12.1] https://github.com/resendlabs/resend-go/releases/tag/v1.12.1 - .
+
+## 2023-04-19 00:41:26
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.20.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.12.2] https://github.com/resendlabs/resend-go/releases/tag/v1.12.2 - .
+
+## 2023-04-20 00:39:02
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.21.3 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.13.0] https://github.com/resendlabs/resend-go/releases/tag/v1.13.0 - .
+
+## 2023-04-21 00:39:24
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.21.4 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.13.1] https://github.com/resendlabs/resend-go/releases/tag/v1.13.1 - .
+
+## 2023-04-22 00:39:40
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.22.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.14.0] https://github.com/resendlabs/resend-go/releases/tag/v1.14.0 - .
+
+## 2023-04-25 00:40:55
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.22.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.14.1] https://github.com/resendlabs/resend-go/releases/tag/v1.14.1 - .
+
+## 2023-04-26 00:40:16
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.23.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.15.0] https://github.com/resendlabs/resend-go/releases/tag/v1.15.0 - .
+
+## 2023-04-27 00:42:31
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.25.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.16.0] https://github.com/resendlabs/resend-go/releases/tag/v1.16.0 - .
+
+## 2023-04-28 00:41:15
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.26.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.17.0] https://github.com/resendlabs/resend-go/releases/tag/v1.17.0 - .
+
+## 2023-04-29 00:38:59
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.26.4 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.17.1] https://github.com/resendlabs/resend-go/releases/tag/v1.17.1 - .
+
+## 2023-05-02 00:40:24
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.26.5 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.17.2] https://github.com/resendlabs/resend-go/releases/tag/v1.17.2 - .
+
+## 2023-05-03 00:40:10
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.27.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.18.0] https://github.com/resendlabs/resend-go/releases/tag/v1.18.0 - .
+
+## 2023-05-05 00:37:17
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.29.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.19.0] https://github.com/resendlabs/resend-go/releases/tag/v1.19.0 - .
+
+## 2023-05-06 00:37:17
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.29.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.19.1] https://github.com/resendlabs/resend-go/releases/tag/v1.19.1 - .
+
+## 2023-05-10 00:39:46
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.29.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.19.2] https://github.com/resendlabs/resend-go/releases/tag/v1.19.2 - .
+
+## 2023-05-11 00:40:03
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.30.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.20.0] https://github.com/resendlabs/resend-go/releases/tag/v1.20.0 - .
+
+## 2023-05-12 00:39:54
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.30.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.20.1] https://github.com/resendlabs/resend-go/releases/tag/v1.20.1 - .
+
+## 2023-05-13 00:38:09
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.31.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.21.0] https://github.com/resendlabs/resend-go/releases/tag/v1.21.0 - .
+
+## 2023-05-16 00:40:56
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.32.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.22.0] https://github.com/resendlabs/resend-go/releases/tag/v1.22.0 - .
+
+## 2023-05-17 00:43:16
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.33.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.23.0] https://github.com/resendlabs/resend-go/releases/tag/v1.23.0 - .

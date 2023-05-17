@@ -68,12 +68,12 @@ func main() {
 ```
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
-### Email
+### [Email](docs/email/README.md)
 
-* `SendEmail` - Send an email
+* [SendEmail](docs/email/README.md#sendemail) - Send an email
 <!-- End SDK Available Operations -->
 
 ## Contributions
